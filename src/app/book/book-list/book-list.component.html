@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6">
+    <button routerLink="/book/create" class="btn badge-success">Add New Book</button>
+    <table class="table caption-top">
+
+      <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Book</th>
+        <th scope="col">Author</th>
+        <th colspan="2" scope="col" rowspan="2"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let book of books">
+        <tr>
+          <td>{{book.id}}</td>
+          <td><a [routerLink]="['/book/detail',book.id]">{{book.title}}</a></td>
+          <td>{{book.author}}</td>
+          <td>
+            <button class="btn btn-danger" [routerLink]="['/book/delete',book.id]">Delete</button>
+          </td>
+          <td>
+            <button class="btn badge-info" [routerLink]="['/book/edit',book.id]">Edit</button>
+          </td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+

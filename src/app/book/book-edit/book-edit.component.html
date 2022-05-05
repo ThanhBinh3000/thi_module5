@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+<h2 style="text-align: center">Update Book Form</h2>
+<div class="col-md-6 offset-3">
+  <form [formGroup]="bookForm" (ngSubmit)="updateBook()">
+    <div class="mb-3">
+      <label class="form-label">Book</label>
+      <input class="form-control" formControlName="title" name="title" type="text">
+      <div style="color: red" *ngIf="titleEdit.errors?.required">name is required</div>
+      <div style="color: red" *ngIf="titleEdit.errors?.minlength">min 3 character</div>
+      <div style="color: red" *ngIf="titleEdit.errors?.maxlength">max 20 character</div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Author</label>
+      <input class="form-control" formControlName="author" name="author" type="text">
+      <p style="color: red" [hidden]="authorEdit.valid || !authorEdit.touched"> Author is required</p>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea class="form-control" formControlName="description" name="description"></textarea>
+      <p style="color: red" [hidden]="descriptionEdit.valid || !descriptionEdit.touched"> Author is required</p>
+    </div>
+
+    <div class="mb-3">
+        <button class="btn badge-danger" type="submit" value="Edit">Edit</button>
+        <button class="btn badge-success" routerLink="/book/list">Exit</button>
+    </div>
+  </form>
+</div>
+
